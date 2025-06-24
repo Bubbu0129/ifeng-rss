@@ -12,8 +12,8 @@ now = datetime.now(timezone.utc).strftime(rfc822)
 config.channel_info["pubDate"] = now
 config.channel_info["lastBuildDate"] = now
 
-config.channel_info["link"] = f"https://wemedia.ifeng.com/zhengming/{config.ifeng_id}_0/list.shtml"
-api = f"https://shankapi.ifeng.com/season/ishare/getShareListData/{config.ifeng_id}/doc/1/ifengnewsh5/getListData?callback=getListData&_=120"
+config.channel_info["link"] = f"https://ishare.ifeng.com/mediaShare/home/{config.ifeng_id}/media"
+api = f"https://shankapi.ifeng.com/season/ishare/getShareListData/{config.ifeng_id}/doc/1/_/getListData"
 
 def format(date_string):
     # Converts a date string from the API (assumed to be UTC+8)
@@ -47,7 +47,7 @@ try:
         if item_url.startswith('//'):
             item_url = 'https:' + item_url
         ET.SubElement(item, 'link').text = item_url
-        ET.SubElement(item, 'guid', isPermaLink="true").text = item_url
+        ET.SubElement(item, 'guid', isPermaLink="false").text = item_data.get('id', '')
         item_date = item_data.get('newsTime')
         ET.SubElement(item, 'pubDate').text = format(item_date)
         thumbnail = item_data.get('thumbnail')

@@ -2,7 +2,7 @@ name: Generate & Publish RSS feed
 
 on:
   schedule:
-    - cron: '36 * * * *'
+    - cron: '29 */8 * * *'
   workflow_dispatch:
 
 permissions:
