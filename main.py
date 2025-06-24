@@ -56,7 +56,7 @@ try:
                 'url': thumbnail, 'length': '0', 'type': 'image/jpeg'
             })
 
-    filename = f"{config.ifeng_id}.xml"
+    filename = 'assets/rss.xml' #f"{config.ifeng_id}.xml"
     xml_bytes = ET.tostring(rss_root, encoding='utf-8', xml_declaration=True)
     with open(filename, 'wb') as f:
         f.write(xml_bytes)
